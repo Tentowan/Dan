@@ -28,6 +28,7 @@ namespace Dan
         private void btnCont_Click(object sender, EventArgs e)
         {
             sname = edtName.Text;
+            //test 
             ssurname = edtSurname.Text;
             iparts = Convert.ToInt32(Math.Round(numParts.Value, 0));
 
