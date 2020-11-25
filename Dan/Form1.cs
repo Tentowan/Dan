@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Text;
 
 namespace Dan
 {
@@ -27,8 +28,8 @@ namespace Dan
         private void btnCont_Click(object sender, EventArgs e)
         {
             sname = edtName.Text;
+            //test 
             ssurname = edtSurname.Text;
-
             iparts = Convert.ToInt32(Math.Round(numParts.Value, 0));
 
             if (sname == "" || ssurname == "")
@@ -37,20 +38,16 @@ namespace Dan
             }
             else
             {
+                spath = @"C:\CrayManBuilder\" + sname + "_" + ssurname + @"\sheet1.txt";
+                sexercisepath = @"C:\CrayManBuilder\Exercise\back.txt";
 
-                Person p = new Person(sname,ssurname);
-                p.MakePeronFile(iparts);
+                Directory.CreateDirectory(Path.GetDirectoryName(spath));
 
-                //spath = @"C:\CrayManBuilder\" + sname + "_" + ssurname + @"\sheet1.txt";
-                //sexercisepath = @"C:\CrayManBuilder\Exercise\back.txt";
-
-                //Directory.CreateDirectory(Path.GetDirectoryName(spath));
-
-                //for (int i = 1; i <= iparts; i++)
-                //{
-                //    var myfile =  File.Create(@"C:\CrayManBuilder\" + sname + "_" + ssurname + @"\sheet"+i.ToString()+".txt");
-                //    myfile.Close();
-                //}
+                for (int i = 1; i <= iparts; i++)
+                {
+                    var myfile =  File.Create(@"C:\CrayManBuilder\" + sname + "_" + ssurname + @"\sheet"+i.ToString()+".txt");
+                    myfile.Close();
+                }
 
                 this.Hide();
                 frmCreate newinstance = new frmCreate();
