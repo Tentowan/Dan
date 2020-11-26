@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace Dan
 {
@@ -40,17 +32,6 @@ namespace Dan
 
                 Person p = new Person(sname,ssurname);
                 p.MakePeronFile(iparts);
-
-                //spath = @"C:\CrayManBuilder\" + sname + "_" + ssurname + @"\sheet1.txt";
-                //sexercisepath = @"C:\CrayManBuilder\Exercise\back.txt";
-
-                //Directory.CreateDirectory(Path.GetDirectoryName(spath));
-
-                //for (int i = 1; i <= iparts; i++)
-                //{
-                //    var myfile =  File.Create(@"C:\CrayManBuilder\" + sname + "_" + ssurname + @"\sheet"+i.ToString()+".txt");
-                //    myfile.Close();
-                //}
 
                 this.Hide();
                 frmCreate newinstance = new frmCreate();

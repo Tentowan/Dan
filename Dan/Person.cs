@@ -19,9 +19,12 @@ namespace Dan
         #region contructor
         public Person(string pName ="basic",string pSurname = "person")
         {
-            this.Name = pSurname;
-            this.Surname = pSurname;
+            this.Name1 = pName;
+            this.Surname1 = pSurname;
         }
+
+        public string Name1 { get => Name; set => Name = value; }
+        public string Surname1 { get => Surname; set => Surname = value; }
 
         #endregion
 
@@ -29,12 +32,12 @@ namespace Dan
 
         public void MakePeronFile(int numOfFiles)
         {
-            string name = this.Name;
-            string sname = this.Surname;
+            string name = this.Name1;
+            string sname = this.Surname1;
             List<string> empt = new List<string>();
             string filename = "sheet"; 
             FileHandeler fa = new FileHandeler();
-            string path = @"C:\ruantest\" + name + "_" + sname + @"\";
+            string path = @"C:\CrayManBuilder\" + name + "_" + sname + @"\";
             Directory.CreateDirectory(Path.GetDirectoryName(path));
 
             for (int i = 1; i <= numOfFiles; i++)
