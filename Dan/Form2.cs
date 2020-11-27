@@ -15,16 +15,11 @@ namespace Dan
         {
             InitializeComponent();
         }
-        //TODO : maak die n function wat net gecall kan word op enige page wat hy nodig is
+
         public void LoadMuscleData()
         {
             DBHandeler dh = new DBHandeler();
-            sql_conn = dh.ReturnConnection();
-            string query = "Select * from musclegroup";
-            DataSet ds = new DataSet();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, sql_conn);
-            adapter.Fill(ds);
-            DataTable dt = ds.Tables[0];
+            DataTable dt = dh.LoadMuscleGData();
 
             foreach (DataRow item in dt.Rows)
             {
