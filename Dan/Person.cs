@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using System.Data.SQLite;
+
 
 namespace Dan
 {
@@ -46,7 +47,36 @@ namespace Dan
             }
             
         }
+        public void AddPersonToDB()
+        {
+            DBHandeler dh = new DBHandeler();
+            //INSERT INTO person (`id`, `name`, `surname`) VALUES(null, 'doos' , 'poes')
+            string qry = @"INSERT INTO person (`id`, `name`, `surname`) VALUES(null,'"+ this.Name1 +"' , '"+this.Surname1+"')";
+            dh.ExecuteQuery(qry);
+        }
+        private int ExecuteWrite(string query, Dictionary<string, object> args)
+        {
+            int numberOfRowsAffected;
 
+            //setup the connection to the database
+            using var con = new SQLiteConnection("Data Source=test.db");
+            con.Open();
+
+            //open a new command
+            using (var cmd = new SQLiteCommand(query, con))
+            {
+                //set the arguments given in the query
+                foreach (var pair in args)
+                {
+                    cmd.Parameters.AddWithValue(pair.Key, pair.Value);
+                }
+
+                //execute the query and get the number of row affected
+                numberOfRowsAffected = cmd.ExecuteNonQuery();
+            }
+
+            return numberOfRowsAffected;
+        }
         #endregion
 
     }

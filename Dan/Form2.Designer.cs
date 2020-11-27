@@ -138,7 +138,7 @@ namespace Dan
             this.btnPrev.TabIndex = 43;
             this.btnPrev.Text = "Previous Program Part";
             this.btnPrev.UseVisualStyleBackColor = false;
-            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            this.btnPrev.Click += new System.EventHandler(this.BtnPrev_Click);
             // 
             // btnNext
             // 
@@ -154,7 +154,7 @@ namespace Dan
             this.btnNext.TabIndex = 41;
             this.btnNext.Text = "Next Program Part";
             this.btnNext.UseVisualStyleBackColor = false;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            this.btnNext.Click += new System.EventHandler(this.BtnNext_Click);
             // 
             // edtTip
             // 
@@ -227,7 +227,7 @@ namespace Dan
             this.btnAdd.TabIndex = 42;
             this.btnAdd.Text = ">";
             this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // edtReps
             // 
@@ -316,6 +316,7 @@ namespace Dan
             this.cbExercise.Size = new System.Drawing.Size(309, 23);
             this.cbExercise.TabIndex = 38;
             this.cbExercise.Text = "Bicep";
+            this.cbExercise.SelectedIndexChanged += new System.EventHandler(this.cbExercise_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -334,7 +335,7 @@ namespace Dan
             this.cbMuscle.Name = "cbMuscle";
             this.cbMuscle.Size = new System.Drawing.Size(309, 23);
             this.cbMuscle.TabIndex = 26;
-            this.cbMuscle.SelectedValueChanged += new System.EventHandler(this.cbMuscle_SelectedValueChanged_1);
+            this.cbMuscle.SelectedValueChanged += new System.EventHandler(this.CbMuscle_SelectedValueChanged_1);
             // 
             // label2
             // 
@@ -353,7 +354,7 @@ namespace Dan
             this.cbPart.Name = "cbPart";
             this.cbPart.Size = new System.Drawing.Size(309, 23);
             this.cbPart.TabIndex = 24;
-            this.cbPart.SelectedValueChanged += new System.EventHandler(this.cbPart_SelectedValueChanged);
+            this.cbPart.SelectedValueChanged += new System.EventHandler(this.CbPart_SelectedValueChanged);
             // 
             // label1
             // 
@@ -396,7 +397,7 @@ namespace Dan
             this.lvPartDisp.TabIndex = 46;
             this.lvPartDisp.UseCompatibleStateImageBehavior = false;
             this.lvPartDisp.View = System.Windows.Forms.View.Details;
-            this.lvPartDisp.SelectedIndexChanged += new System.EventHandler(this.lvPartDisp_SelectedIndexChanged);
+            this.lvPartDisp.SelectedIndexChanged += new System.EventHandler(this.LvPartDisp_SelectedIndexChanged);
             // 
             // exercise
             // 
@@ -509,7 +510,7 @@ namespace Dan
             this.Controls.Add(this.groupBox1);
             this.Name = "frmCreate";
             this.Text = "Cray Man Builder -  Create Program";
-            this.Load += new System.EventHandler(this.frmCreate_Load);
+            this.Load += new System.EventHandler(this.FormCreateLoad);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSupSets)).EndInit();

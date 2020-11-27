@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Dan
 {
-    public partial class frmMain : Form
+    public partial class FormMain : Form
     {
         public static string sname;
         public static string ssurname;
@@ -11,12 +11,12 @@ namespace Dan
         public static string spath;
         public static string sexercisepath;
 
-        public frmMain()
+        public FormMain()
         {
             InitializeComponent();
         }
 
-        private void btnCont_Click(object sender, EventArgs e)
+        private void BtnCont_Click(object sender, EventArgs e)
         {
             sname = edtName.Text;
             ssurname = edtSurname.Text;
@@ -32,11 +32,18 @@ namespace Dan
 
                 Person p = new Person(sname,ssurname);
                 p.MakePeronFile(iparts);
-
+                p.AddPersonToDB();
                 this.Hide();
                 frmCreate newinstance = new frmCreate();
                 newinstance.Show();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form3 d = new Form3();
+            d.Show();
         }
     }
 }

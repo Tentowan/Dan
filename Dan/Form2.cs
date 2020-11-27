@@ -1,20 +1,40 @@
 ﻿using System;
-using System.Windows.Forms;
+using System.Data;
+using System.Data.SQLite;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Dan
 {
     public partial class frmCreate : Form
     {
         public static string sgroup, sselectedpart;
+        private SQLiteConnection sql_conn;
+
         public frmCreate()
         {
             InitializeComponent();
         }
-
-        private void frmCreate_Load(object sender, EventArgs e)
+        //TODO : maak die n function wat net gecall kan word op enige page wat hy nodig is
+        public void LoadMuscleData()
         {
-            DirectoryInfo dirpart = new DirectoryInfo(@"C:\CrayManBuilder\" + frmMain.sname + "_" + frmMain.ssurname);
+            DBHandeler dh = new DBHandeler();
+            sql_conn = dh.ReturnConnection();
+            string query = "Select * from musclegroup";
+            DataSet ds = new DataSet();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, sql_conn);
+            adapter.Fill(ds);
+            DataTable dt = ds.Tables[0];
+
+            foreach (DataRow item in dt.Rows)
+            {
+                cbMuscle.Items.Add(item["id"] + "." + item["name"]);
+            }
+        }
+
+        private void FormCreateLoad(object sender, EventArgs e)
+        {
+            DirectoryInfo dirpart = new DirectoryInfo(@"C:\CrayManBuilder\" + FormMain.sname + "_" + FormMain.ssurname);
 
             FileInfo[] filespart = dirpart.GetFiles("*.txt");
             foreach (FileInfo filepart in filespart)
@@ -27,78 +47,67 @@ namespace Dan
             }
             cbPart.SelectedIndex = 0;
 
-            DirectoryInfo dirgroup = new DirectoryInfo(@"C:\CrayManBuilder\Exercises");
 
-            FileInfo[] filesgroup = dirgroup.GetFiles("*.txt");
-            foreach (FileInfo filegroup in filesgroup)
-            {
-                string filegroupfull = filegroup.Name;
-                int fileextpos2 = filegroupfull.LastIndexOf(".");
-                if (fileextpos2 >= 0)
-                    filegroupfull = filegroupfull.Substring(0, fileextpos2);           
-                cbMuscle.Items.Add(filegroupfull);
-            }
-            cbMuscle.SelectedIndex = 0;
-
-            
+            LoadMuscleData();
+            cbMuscle.Text = "1.arms";
         }
 
-        private void cbMuscle_SelectedValueChanged(object sender, EventArgs e)
+        private void CBMuscle_SelectedValueChanged(object sender, EventArgs e)
         {
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ButtonClick1(object sender, EventArgs e)
         {
 
         }
 
-        private void cbMuscle_SelectedValueChanged_1(object sender, EventArgs e)
+        private void CbMuscle_SelectedValueChanged_1(object sender, EventArgs e)
         {
-            sgroup = cbMuscle.SelectedItem.ToString();
+            //sgroup = cbMuscle.SelectedItem.ToString();
 
-            cbExercise.Items.Clear();
+            //cbExercise.Items.Clear();
 
-            DirectoryInfo direxe = new DirectoryInfo(@"C:\CrayManBuilder\Exercises\" + sgroup + @".txt");
+           // DirectoryInfo direxe = new DirectoryInfo(@"C:\CrayManBuilder\Exercises\" + sgroup + @".txt");
 
-            string[] s = File.ReadAllLines(@"C:\CrayManBuilder\Exercises\" + sgroup + @".txt");
-            foreach (string line in s)
-            {
-                string[] str = line.Split(',');
-                cbExercise.Items.Add(str[0]);
-            }
+           // string[] s = File.ReadAllLines(@"C:\CrayManBuilder\Exercises\" + sgroup + @".txt");
+           // foreach (string line in s)
+           // {
+           //     string[] str = line.Split(',');
+           //     cbExercise.Items.Add(str[0]);
+          //  }
 
-            cbExercise.SelectedIndex = 0;
+           // cbExercise.SelectedIndex = 0;
         }
 
-        private void btnPrev_Click(object sender, EventArgs e)
+        private void BtnPrev_Click(object sender, EventArgs e)
         {
             if (cbPart.SelectedIndex > 0)
             {
-                cbPart.SelectedIndex = cbPart.SelectedIndex - 1;
+                cbPart.SelectedIndex--;
                 cbPart.Update();
             }
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
+        private void BtnNext_Click(object sender, EventArgs e)
         {
-            if (cbPart.SelectedIndex < frmMain.iparts-1)
+            if (cbPart.SelectedIndex < FormMain.iparts-1)
             {
-                cbPart.SelectedIndex = cbPart.SelectedIndex + 1;
+                cbPart.SelectedIndex ++;
                 cbPart.Update();
             }
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void cbPart_SelectedValueChanged(object sender, EventArgs e)
+        private void CbPart_SelectedValueChanged(object sender, EventArgs e)
         {
             sselectedpart = cbPart.SelectedItem.ToString();
             lvPartDisp.Items.Clear();
-            DirectoryInfo dirpart = new DirectoryInfo(@"C:\CrayManBuilder\" + frmMain.sname + "_" + frmMain.ssurname + @"\" + sselectedpart + @".txt");
+            DirectoryInfo dirpart = new DirectoryInfo(@"C:\CrayManBuilder\" + FormMain.sname + "_" + FormMain.ssurname + @"\" + sselectedpart + @".txt");
 
             int counter = 0;
             string line;
@@ -122,17 +131,22 @@ namespace Dan
             file.Close();
         }
 
-        private void lvPartDisp_SelectedIndexChanged(object sender, EventArgs e)
+        private void LvPartDisp_SelectedIndexChanged(object sender, EventArgs e)
         {
             
 
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void cbExercise_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
             lvPartDisp.Update();
             sselectedpart = cbPart.SelectedItem.ToString();
-            DirectoryInfo dirpart = new DirectoryInfo(@"C:\CrayManBuilder\" + frmMain.sname + "_" + frmMain.ssurname+@"\"+sselectedpart+@".txt");
+            DirectoryInfo dirpart = new DirectoryInfo(@"C:\CrayManBuilder\" + FormMain.sname + "_" + FormMain.ssurname+@"\"+sselectedpart+@".txt");
             //MessageBox.Show(dirpart.FullName);
 
             string stext =  cbExercise.SelectedItem.ToString() + "," + Convert.ToInt32(Math.Round(numSets.Value, 0)) + "," +

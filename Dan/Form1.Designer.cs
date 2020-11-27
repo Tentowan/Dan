@@ -1,7 +1,7 @@
 ﻿
 namespace Dan
 {
-    partial class frmMain
+    partial class FormMain
     {
         /// <summary>
         ///  Required designer variable.
@@ -36,6 +36,7 @@ namespace Dan
             this.label3 = new System.Windows.Forms.Label();
             this.numParts = new System.Windows.Forms.NumericUpDown();
             this.btnCont = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numParts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,15 +122,26 @@ namespace Dan
             this.btnCont.TabIndex = 7;
             this.btnCont.Text = "Continue";
             this.btnCont.UseVisualStyleBackColor = false;
-            this.btnCont.Click += new System.EventHandler(this.btnCont_Click);
+            this.btnCont.Click += new System.EventHandler(this.BtnCont_Click);
             // 
-            // frmMain
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(-2, 98);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(290, 140);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCont);
             this.Controls.Add(this.numParts);
             this.Controls.Add(this.label3);
@@ -137,7 +149,7 @@ namespace Dan
             this.Controls.Add(this.label2);
             this.Controls.Add(this.edtName);
             this.Controls.Add(this.label1);
-            this.Name = "frmMain";
+            this.Name = "FormMain";
             this.Text = "Cray Man Builder - Start";
             ((System.ComponentModel.ISupportInitialize)(this.numParts)).EndInit();
             this.ResumeLayout(false);
@@ -154,6 +166,7 @@ namespace Dan
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numParts;
         private System.Windows.Forms.Button btnCont;
+        private System.Windows.Forms.Button button1;
     }
 }
 
