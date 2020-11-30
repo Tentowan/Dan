@@ -49,7 +49,7 @@ namespace Dan
 
         private void BtnAddExercise_Click(object sender, EventArgs e)
         {
-            @int m = new @int();
+            int m = new int();
             string[] muscleGroup = MuscleGroupCbb.SelectedItem.ToString().Split('.');
             Exercise exer = new Exercise(0,Convert.ToInt32(muscleGroup[0]), ExersiceNameTxt.Text,TipTxt.Text);
             exer.AddExercise();
