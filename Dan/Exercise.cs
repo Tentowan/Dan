@@ -12,7 +12,6 @@ namespace Dan
         private int muscleGroup;
         private string exerciseName;
         private string tip;
-
         #endregion
 
 
@@ -29,26 +28,26 @@ namespace Dan
 
 
         #region properties
-        public string TipP
+        public string Tip
         {
             get { return tip; }
             set { tip = value; }
         }
 
 
-        public string ExerciseNameP
+        public string ExerciseName
         {
             get { return exerciseName; }
             set { exerciseName = value; }
         }
 
-        public int MuscleGroupP
+        public int MuscleGroup
         {
             get { return muscleGroup; }
             set { muscleGroup = value; }
         }
 
-        public int IDp
+        public int ID
         {
             get { return id; }
             set { id = value; }
@@ -67,6 +66,7 @@ namespace Dan
             string qry = "INSERT INTO exercises (`id`, `muscleid`, `exerciseName`,`tip`) VALUES (null, '"+this.muscleGroup+"','"+this.exerciseName+"' , '"+this.tip+"')";
             dh.ExecuteQuery(qry);
         }
+        
 
         public List<Exercise> GetExercises()
         {
