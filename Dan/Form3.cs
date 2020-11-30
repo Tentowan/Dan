@@ -16,12 +16,9 @@ namespace Dan
         {
             InitializeComponent();
         }
-        private DataSet DS = new DataSet();
-        private DataTable DT = new DataTable();
-        private SQLiteDataAdapter DB;
-        private SQLiteConnection sql_conn = new SQLiteConnection();
-        private SQLiteCommand sql_cmd;
 
+        private DataTable DT = new DataTable();
+        private SQLiteConnection sql_conn = new SQLiteConnection();
         DBHandeler dh = new DBHandeler();
 
         public void LoadExerciseData()
