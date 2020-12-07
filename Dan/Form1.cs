@@ -39,7 +39,7 @@ namespace Dan
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             this.Hide();
             Form3 d = new Form3();

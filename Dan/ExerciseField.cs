@@ -70,9 +70,11 @@ namespace Dan
 
         #endregion
         #region methods
-        public void AddSegmentToDB()
+        DBHandeler dh = new DBHandeler();
+        public void AddFieldToDB(int segID)
         {
-
+            string fieldQry = "insert into program_meta(segmentID,Exerciseid,sets,superSet,reps,maxPersentage,weight) VALUES(" + segID + "," + Exercise.ID + ", " + Sets + ","+SuperSets+","+Reps+","+Max+","+Weight+")";
+            dh.ExecuteQuery(fieldQry);
         }
         #endregion
     }

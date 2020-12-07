@@ -37,6 +37,7 @@ namespace Dan
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BtnAddExercise = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@ namespace Dan
             this.lblename.Size = new System.Drawing.Size(81, 15);
             this.lblename.TabIndex = 0;
             this.lblename.Text = "Exersise name";
-            this.lblename.Click += new System.EventHandler(this.lblename_Click);
+            this.lblename.Click += new System.EventHandler(this.Lblename_Click);
             // 
             // dataGridView1
             // 
@@ -58,7 +59,7 @@ namespace Dan
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(482, 429);
             this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // ExersiceNameTxt
             // 
@@ -111,11 +112,21 @@ namespace Dan
             this.BtnAddExercise.UseVisualStyleBackColor = true;
             this.BtnAddExercise.Click += new System.EventHandler(this.BtnAddExercise_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(49, 332);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 15);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "label3";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.BtnAddExercise);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -143,5 +154,6 @@ namespace Dan
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button BtnAddExercise;
+        private System.Windows.Forms.Label label3;
     }
 }

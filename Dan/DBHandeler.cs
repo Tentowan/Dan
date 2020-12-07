@@ -39,7 +39,10 @@ namespace Dan
         }
         public DataTable LoadMuscleGData()
         {
+
+
             SetConnection();
+            sql_conn.Open();
             string query = "Select * from musclegroup";
             DataSet ds = new DataSet();
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, sql_conn);
@@ -58,6 +61,77 @@ namespace Dan
             sql_conn.Close();
         }
 
+        public int GetProgramIDFromDB()
+        {
+            SetConnection();
+            sql_conn.Open();
+            int id = 0;
+            string qry = "SELECT `id` FROM `program` ORDER BY `id` DESC limit 1";
+            DataSet ds = new DataSet();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(qry, sql_conn);
+            adapter.Fill(ds);
+            DataTable dt = ds.Tables[0];
 
+            foreach (DataRow item in dt.Rows)
+            {
+                id =  Convert.ToInt32(item["id"]);
+            }
+            return id;
+        }
+
+        public int GetSegmentIDFromDB()
+        {
+            SetConnection();
+            sql_conn.Open();
+            int id = 0;
+            string qry = "SELECT `id` FROM `program_segment` ORDER BY id DESC limit 1";
+            DataSet ds = new DataSet();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(qry, sql_conn);
+            adapter.Fill(ds);
+            DataTable dt = ds.Tables[0];
+
+            foreach (DataRow item in dt.Rows)
+            {
+                id = Convert.ToInt32(item["id"]);
+            }
+            return id;
+        }
+        public int GetPersonIDFromDB()
+        {
+            SetConnection();
+            sql_conn.Open();
+            int id = 0;
+            string qry = "SELECT `id` FROM `person` ORDER BY id DESC limit 1";
+            DataSet ds = new DataSet();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(qry, sql_conn);
+            adapter.Fill(ds);
+            DataTable dt = ds.Tables[0];
+
+            foreach (DataRow item in dt.Rows)
+            {
+                id = Convert.ToInt32(item["id"]);
+            }
+            return id;
+        }
+        public Exercise GetExDataFromDB(int id)
+        {
+            string qry = "SELECT * FROM `exercises` Where `id` =" + id;
+            SetConnection();
+            sql_conn.Open();
+
+
+            Exercise ex = new Exercise();
+            DataSet ds = new DataSet();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(qry, connection: sql_conn);
+            adapter.Fill(ds);
+            
+            DataTable dt = ds.Tables[0];
+
+            foreach (DataRow item in dt.Rows)
+            {
+                ex = new Exercise(Convert.ToInt32(item["id"]), Convert.ToInt32(item["muscleid"]), item["exerciseName"].ToString(), item["tip"].ToString());
+            }
+            return ex;
+        }
     }
 }

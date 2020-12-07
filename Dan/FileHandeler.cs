@@ -15,9 +15,10 @@ namespace Dan
         #endregion
 
         #region Constructors
-        public FileHandeler(string filePath = "text.txt")
+        public FileHandeler(string filePathPrime)
         {
-            this.filePathPrime = filePath;
+            
+            this.filePathPrime = filePathPrime;
         }
 
         public FileHandeler()

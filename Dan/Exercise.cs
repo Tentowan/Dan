@@ -15,13 +15,21 @@ namespace Dan
         #endregion
 
 
-        #region constructor
+        #region constructors
         public Exercise(int pid, int pmuscleGroup, string pexerciseName, string ptip)
         {
             this.id = pid;
             this.muscleGroup = pmuscleGroup;
             this.exerciseName = pexerciseName;
             this.tip = ptip;
+        }
+        public Exercise(int idp)
+        {
+            this.id = idp;
+        }
+        public Exercise()
+        {
+
         }
         #endregion
 
@@ -72,6 +80,10 @@ namespace Dan
         {
             List < Exercise > data = new List<Exercise>();
             return data;
+        }
+        public Exercise GetExercise()
+        { 
+           return dh.GetExDataFromDB(ID);   
         }
         #endregion
     }

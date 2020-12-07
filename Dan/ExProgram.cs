@@ -7,19 +7,19 @@ namespace Dan
     class ExProgram
     {
         #region fields
-        private int id;
         private int personID;
         private string programName;
         private List<Segment> segments;
         #endregion
 
         #region constructor
-        public ExProgram(int idp, int personIDp, string programNamep)
+        public ExProgram( int personIDp, string programNamep, List<Segment> segmentsp)
         {
-            this.id = idp;
             this.personID = personIDp;
             this.programName = programNamep;
+            this.segments = segmentsp;
         }
+
         #endregion
 
         #region properties
@@ -40,17 +40,24 @@ namespace Dan
             set { personID = value; }
         }
 
-
-        public int ID
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
         #endregion
+        DBHandeler dh = new DBHandeler();
 
         #region methods
+        public void AddProgramToDB()
+        {
+            
+            string qry = "insert into program(id,personID,programName) values(NULL,"+PersonID+",'"+ProgramName+"')";
+            dh.ExecuteQuery(qry);
 
+            int programid = dh.GetProgramIDFromDB();
+            foreach (var item in Segments)
+            {
+                item.AddSegmentToDB(programid);
+            }
+               
+            
+        }
         #endregion
     }
 }

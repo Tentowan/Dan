@@ -9,7 +9,6 @@ namespace Dan
     public partial class frmCreate : Form
     {
         public static string sgroup, sselectedpart;
-        private SQLiteConnection sql_conn;
 
         public frmCreate()
         {
@@ -132,7 +131,7 @@ namespace Dan
 
         }
 
-        private void cbExercise_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbExercise_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

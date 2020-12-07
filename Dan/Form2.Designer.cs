@@ -316,7 +316,7 @@ namespace Dan
             this.cbExercise.Size = new System.Drawing.Size(309, 23);
             this.cbExercise.TabIndex = 38;
             this.cbExercise.Text = "Bicep";
-            this.cbExercise.SelectedIndexChanged += new System.EventHandler(this.cbExercise_SelectedIndexChanged);
+            this.cbExercise.SelectedIndexChanged += new System.EventHandler(this.CbExercise_SelectedIndexChanged);
             // 
             // label3
             // 
