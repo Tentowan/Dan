@@ -85,6 +85,10 @@ namespace Dan
         { 
            return dh.GetExDataFromDB(ID);   
         }
+        public override string ToString()
+        {
+            return this.exerciseName;
+        }
         #endregion
     }
 }

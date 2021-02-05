@@ -37,6 +37,19 @@ namespace Dan
             DT = DS.Tables[0];
             return DT;
         }
+
+        public DataTable LoadSpesificExercises(int x)
+        {
+            SetConnection();
+            sql_conn.Open();
+            sql_cmd = sql_conn.CreateCommand();
+            string CommandText = "select * from exercises where muscleid =" +  x;
+            DB = new SQLiteDataAdapter(CommandText, sql_conn);
+            DS.Reset();
+            DB.Fill(DS);
+            DT = DS.Tables[0];
+            return DT;
+        }
         public DataTable LoadMuscleGData()
         {
 

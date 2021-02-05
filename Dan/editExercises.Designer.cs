@@ -1,7 +1,7 @@
 ﻿
 namespace Dan
 {
-    partial class Form3
+    partial class editExercises
     {
         /// <summary>
         /// Required designer variable.
@@ -54,10 +54,10 @@ namespace Dan
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(295, 9);
+            this.dataGridView1.Location = new System.Drawing.Point(158, 9);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(482, 429);
+            this.dataGridView1.Size = new System.Drawing.Size(619, 429);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
@@ -121,7 +121,7 @@ namespace Dan
             this.label3.TabIndex = 8;
             this.label3.Text = "label3";
             // 
-            // Form3
+            // editExercises
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -135,7 +135,7 @@ namespace Dan
             this.Controls.Add(this.ExersiceNameTxt);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblename);
-            this.Name = "Form3";
+            this.Name = "editExercises";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -10,9 +10,9 @@ using System.Data.SQLite;
 
 namespace Dan
 {
-    public partial class Form3 : Form
+    public partial class editExercises : Form
     {
-        public Form3()
+        public editExercises()
         {
             InitializeComponent();
         }

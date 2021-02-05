@@ -28,18 +28,18 @@ namespace Dan
 
         private void FormCreateLoad(object sender, EventArgs e)
         {
-            DirectoryInfo dirpart = new DirectoryInfo(@"C:\CrayManBuilder\" + FormMain.sname + "_" + FormMain.ssurname);
+            //DirectoryInfo dirpart = new DirectoryInfo(@"C:\CrayManBuilder\" + FormMain.sname + "_" + FormMain.ssurname);
 
-            FileInfo[] filespart = dirpart.GetFiles("*.txt");
-            foreach (FileInfo filepart in filespart)
-            {
-                string filepartfull = filepart.Name;
-                int fileextpos = filepartfull.LastIndexOf(".");
-                if (fileextpos >= 0)
-                    filepartfull = filepartfull.Substring(0, fileextpos);
-                cbPart.Items.Add(filepartfull);
-            }
-            cbPart.SelectedIndex = 0;
+            //FileInfo[] filespart = dirpart.GetFiles("*.txt");
+            //foreach (FileInfo filepart in filespart)
+            //{
+            //    string filepartfull = filepart.Name;
+            //    int fileextpos = filepartfull.LastIndexOf(".");
+            //    if (fileextpos >= 0)
+            //        filepartfull = filepartfull.Substring(0, fileextpos);
+            //    cbPart.Items.Add(filepartfull);
+            //}
+            //cbPart.SelectedIndex = 0;
 
 
             LoadMuscleData();
@@ -85,11 +85,11 @@ namespace Dan
 
         private void BtnNext_Click(object sender, EventArgs e)
         {
-            if (cbPart.SelectedIndex < FormMain.iparts-1)
-            {
-                cbPart.SelectedIndex ++;
-                cbPart.Update();
-            }
+            //if (cbPart.SelectedIndex < FormMain.iparts-1)
+            //{
+            //    cbPart.SelectedIndex ++;
+            //    cbPart.Update();
+            //}
         }
 
         private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -99,30 +99,30 @@ namespace Dan
 
         private void CbPart_SelectedValueChanged(object sender, EventArgs e)
         {
-            sselectedpart = cbPart.SelectedItem.ToString();
-            lvPartDisp.Items.Clear();
-            DirectoryInfo dirpart = new DirectoryInfo(@"C:\CrayManBuilder\" + FormMain.sname + "_" + FormMain.ssurname + @"\" + sselectedpart + @".txt");
+            //sselectedpart = cbPart.SelectedItem.ToString();
+            //lvPartDisp.Items.Clear();
+            //DirectoryInfo dirpart = new DirectoryInfo(@"C:\CrayManBuilder\" + FormMain.sname + "_" + FormMain.ssurname + @"\" + sselectedpart + @".txt");
 
-            int counter = 0;
-            string line;
+            //int counter = 0;
+            //string line;
 
-            System.IO.StreamReader file = new System.IO.StreamReader(dirpart.FullName);
-            while ((line = file.ReadLine()) != null)
-            {
+            //System.IO.StreamReader file = new System.IO.StreamReader(dirpart.FullName);
+            //while ((line = file.ReadLine()) != null)
+            //{
 
-                string whole = line;
-                string[] parts = whole.Split(",");
-                lvPartDisp.Items.Add(parts[0]);
-                lvPartDisp.Items[counter].SubItems.Add(parts[1]);
-                lvPartDisp.Items[counter].SubItems.Add(parts[2]);
-                lvPartDisp.Items[counter].SubItems.Add(parts[3]);
-                lvPartDisp.Items[counter].SubItems.Add(parts[4]);
-                lvPartDisp.Items[counter].SubItems.Add(parts[5]);
-                lvPartDisp.Items[counter].SubItems.Add(parts[6]);
-                lvPartDisp.Items[counter].SubItems.Add(parts[7]);
-                counter++;
-            }
-            file.Close();
+            //    string whole = line;
+            //    string[] parts = whole.Split(",");
+            //    lvPartDisp.Items.Add(parts[0]);
+            //    lvPartDisp.Items[counter].SubItems.Add(parts[1]);
+            //    lvPartDisp.Items[counter].SubItems.Add(parts[2]);
+            //    lvPartDisp.Items[counter].SubItems.Add(parts[3]);
+            //    lvPartDisp.Items[counter].SubItems.Add(parts[4]);
+            //    lvPartDisp.Items[counter].SubItems.Add(parts[5]);
+            //    lvPartDisp.Items[counter].SubItems.Add(parts[6]);
+            //    lvPartDisp.Items[counter].SubItems.Add(parts[7]);
+            //    counter++;
+            //}
+            //file.Close();
         }
 
         private void LvPartDisp_SelectedIndexChanged(object sender, EventArgs e)
@@ -138,18 +138,18 @@ namespace Dan
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            lvPartDisp.Update();
-            sselectedpart = cbPart.SelectedItem.ToString();
-            DirectoryInfo dirpart = new DirectoryInfo(@"C:\CrayManBuilder\" + FormMain.sname + "_" + FormMain.ssurname+@"\"+sselectedpart+@".txt");
-            //MessageBox.Show(dirpart.FullName);
+            //lvPartDisp.Update();
+            //sselectedpart = cbPart.SelectedItem.ToString();
+            //DirectoryInfo dirpart = new DirectoryInfo(@"C:\CrayManBuilder\" + FormMain.sname + "_" + FormMain.ssurname+@"\"+sselectedpart+@".txt");
+            ////MessageBox.Show(dirpart.FullName);
 
-            string stext =  cbExercise.SelectedItem.ToString() + "," + Convert.ToInt32(Math.Round(numSets.Value, 0)) + "," +
-                            Convert.ToInt32(Math.Round(numSupSets.Value, 0)) + "," + edtReps.Text + "," + edtRest.Text + "," +
-                            edtMax.Text + "," + edtWeight.Text + "," + edtTip.Text + "\n";
-            File.AppendAllText(dirpart.FullName, stext);
+            //string stext =  cbExercise.SelectedItem.ToString() + "," + Convert.ToInt32(Math.Round(numSets.Value, 0)) + "," +
+            //                Convert.ToInt32(Math.Round(numSupSets.Value, 0)) + "," + edtReps.Text + "," + edtRest.Text + "," +
+            //                edtMax.Text + "," + edtWeight.Text + "," + edtTip.Text + "\n";
+            //File.AppendAllText(dirpart.FullName, stext);
             
 
-            MessageBox.Show(stext);
+            //MessageBox.Show(stext);
         }
     }
 }
